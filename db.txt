@@ -1,0 +1,30 @@
+Explanation:
+User Model:
+
+id, email, password, role, createdAt, updatedAt: Basic user information.
+role: Enum to differentiate between customers and owners.
+Relations: Users can own multiple restaurants and have multiple orders and carts.
+
+Restaurant Model:
+id, name, description, ownerId, createdAt, updatedAt: Basic restaurant information.
+ownerId: Foreign key linking to the User model.
+Relations: Each restaurant can have multiple menu items.
+
+Menu Model:
+id, restaurantId, name, description, price, isVegetarian, createdAt, updatedAt: Basic menu item information.
+restaurantId: Foreign key linking to the Restaurant model.
+Relations: Menu items can appear in multiple carts.
+
+Cart Model:
+id, userId, menuItemId, quantity, createdAt, updatedAt: Basic cart information.
+userId: Foreign key linking to the User model.
+menuItemId: Foreign key linking to the Menu model.
+
+Order Model:
+id, userId, totalPrice, status, createdAt, updatedAt: Basic order information.
+userId: Foreign key linking to the User model.
+status: Enum to track order status.
+
+Enums:
+UserRole: Defines user roles (CUSTOMER, OWNER).
+OrderStatus: Defines order statuses (PENDING, COMPLETED).
